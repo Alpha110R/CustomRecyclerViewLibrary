@@ -54,50 +54,73 @@ Here's an example of how to use CustomRecyclerView in your MainActivity class:
 
 ```java
 public class MainActivity extends AppCompatActivity {
-
     private CustomRecyclerView customRecyclerView;
+
     private CustomAdapter customAdapter;
+    private List<String> dataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Initialize the CustomRecyclerView
         customRecyclerView = findViewById(R.id.customRecyclerView);
 
-        // Create and set the CustomAdapter
-        customAdapter = new CustomAdapter();
+
+        dataList = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            dataList.add("Item " + (i + 1));
+        }
+
+        customAdapter = new CustomAdapter(dataList);
+
         customRecyclerView.setAdapterAndLayout(customAdapter);
 
-        // Add pagination support
-        customRecyclerView.addPaginationSupport(new CustomRecyclerView.PaginationListener() {
+        customRecyclerView.addPaginationSupport(new RecyclerViewUtils.PaginationListener() {
             @Override
             public void loadMoreItems() {
-                // Load more items logic
+                // Load more items here
             }
 
             @Override
             public boolean isLoading() {
-                // Return the loading state
+                // Return loading state here
                 return false;
             }
 
             @Override
             public boolean isLastPage() {
-                // Return whether it is the last page
+                // Return last page state here
                 return false;
             }
         });
-
-        // Add item divider
-        customRecyclerView.addItemDivider(R.drawable.item_divider);
-
-        // Add item click listener
-        customRecyclerView.setOnItemClickListener(new CustomRecyclerView.OnItemClickListener() {
+        customRecyclerView.addDragAndDropSupport(new ItemTouchHelper.Callback() {
             @Override
-            public void onItemClick(int position) {
-                // Handle item click
+            public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+                // Implement getMovementFlags
+                return 0;
+            }
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull                 RecyclerView.ViewHolder target) {
+                // Implement onMove gestures
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                // Implement onSwipe gestures
+            }
+        });
+        customRecyclerView.addSwipeGestures(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                // Implement onMove gestures
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                // Implement onSwiped gestures
             }
         });
     }
