@@ -21,13 +21,14 @@ To use CustomRecyclerView in your Android project, follow these steps:
 
 Add the following lines of code to the `allprojects` section of your project-level build.gradle file:
 
+```
 allprojects {
 repositories {
 ...
 maven { url 'https://jitpack.io' }
 }
 }
-
+```
 
 ### Step 2: Add the library dependency to your app-level build.gradle file
 
