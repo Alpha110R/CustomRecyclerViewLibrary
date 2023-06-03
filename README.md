@@ -34,9 +34,11 @@ allprojects {
 
 Add the following line of code to the `dependencies` section of your app-level build.gradle file:
 
+```
 dependencies {
-implementation 'com.github.Alpha110R:CustomRecyclerViewLibrary:1.00.02'
+    implementation 'com.github.Alpha110R:CustomRecyclerViewLibrary:1.00.02'
 }
+```
 
 ### Step 3: Sync your project with Gradle files
 
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
 ## License
 
-Copyright 2023 Alon Ronder
+Copyright 2023 Alon Ronder & Elad Sabag
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
