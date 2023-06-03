@@ -23,10 +23,10 @@ Add the following lines of code to the `allprojects` section of your project-lev
 
 ```
 allprojects {
-repositories {
-...
-maven { url 'https://jitpack.io' }
-}
+    repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+    }
 }
 ```
 
