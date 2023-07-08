@@ -41,7 +41,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.alpha110r'
             artifactId = 'customrecyclerviewlibrary'
-            version = '1.00.02'
+            version = '1.00.03'
             afterEvaluate { from components.release }
         }
     }

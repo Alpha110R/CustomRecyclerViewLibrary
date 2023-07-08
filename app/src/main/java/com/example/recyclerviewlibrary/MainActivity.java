@@ -3,29 +3,15 @@ package com.example.recyclerviewlibrary;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-
 import com.example.customrecyclerviewlibrary.CustomRecyclerView;
 import com.example.customrecyclerviewlibrary.RecyclerViewUtils;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private CustomRecyclerView customRecyclerView;
-
     private CustomAdapter customAdapter;
     private List<String> dataList;
 
@@ -43,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
         customAdapter = new CustomAdapter(dataList);
 
-        customRecyclerView.setAdapterAndLayout(customAdapter);
+        customRecyclerView.addLinearLayoutManager(true);
+        customRecyclerView.addItemAnimation();
+        customRecyclerView.addDividerItemDecoration(true);
+        customRecyclerView.setAdapter(customAdapter);
 
         customRecyclerView.addPaginationSupport(new RecyclerViewUtils.PaginationListener() {
             @Override
