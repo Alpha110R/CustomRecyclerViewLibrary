@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 ## What's new ?
 
-1.00.02:
+1.00.03:
 
 ## License
 
