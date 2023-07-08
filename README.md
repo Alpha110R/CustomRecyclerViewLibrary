@@ -36,7 +36,7 @@ Add the following line of code to the `dependencies` section of your app-level b
 
 ```
 dependencies {
-    implementation 'com.github.Alpha110R:CustomRecyclerViewLibrary:1.00.02'
+    implementation 'com.github.Alpha110R:CustomRecyclerViewLibrary:1.00.03'
 }
 ```
 
@@ -55,7 +55,6 @@ Here's an example of how to use CustomRecyclerView in your MainActivity class:
 ```java
 public class MainActivity extends AppCompatActivity {
     private CustomRecyclerView customRecyclerView;
-
     private CustomAdapter customAdapter;
     private List<String> dataList;
 
@@ -73,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
 
         customAdapter = new CustomAdapter(dataList);
 
-        customRecyclerView.setAdapterAndLayout(customAdapter);
+        customRecyclerView.addLinearLayoutManager(true);
+        customRecyclerView.addItemAnimation();
+        customRecyclerView.addDividerItemDecoration(true);
+        customRecyclerView.setAdapter(customAdapter);
 
         customRecyclerView.addPaginationSupport(new RecyclerViewUtils.PaginationListener() {
             @Override
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull                 RecyclerView.ViewHolder target) {
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 // Implement onMove gestures
                 return false;
             }
