@@ -40,8 +40,8 @@ public class CustomRecyclerView extends RecyclerView {
         RecyclerViewUtils.addPaginationSupport(this, paginationListener);
     }
 
-    public void addItemAnimation() {
-        RecyclerViewUtils.addItemAnimation(this);
+    public void addItemAnimation(long duration) {
+        RecyclerViewUtils.addItemAnimation(this, duration);
     }
 
     public void addDragAndDropSupport(ItemTouchHelper.Callback callback) {

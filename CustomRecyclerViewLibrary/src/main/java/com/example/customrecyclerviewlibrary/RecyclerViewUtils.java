@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class RecyclerViewUtils {
 
     // Utility method for adding item animations to RecyclerView
-    public static void addItemAnimation(RecyclerView recyclerView) {
+    public static void addItemAnimation(RecyclerView recyclerView, long duration) {
         DefaultItemAnimator animator = new DefaultItemAnimator();
-        animator.setAddDuration(300);
-        animator.setRemoveDuration(300);
+        animator.setAddDuration(duration);
+        animator.setRemoveDuration(duration);
         recyclerView.setItemAnimator(animator);
     }
 
@@ -43,11 +43,10 @@ public class RecyclerViewUtils {
                     LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                     int visibleItemCount = layoutManager.getChildCount();
                     int totalItemCount = layoutManager.getItemCount();
-                    int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
+                    int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
 
                     if (!listener.isLoading() && !listener.isLastPage()) {
-                        if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount
-                                && firstVisibleItemPosition >= 0) {
+                        if (lastVisibleItemPosition == totalItemCount - 1) {
                             listener.loadMoreItems();
                         }
                     }
